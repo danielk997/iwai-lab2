@@ -1,16 +1,32 @@
 {
-  "tasks": [
+  "characters": [
     {
-      "id": 1,
-      "text": "Doctors Appointment",
-      "day": "Feb 5th at 2:30pm",
-      "reminder": true
+      "name": "Luke Skywalker",
+      "height": "172",
+      "mass": "77",
+      "eye_color": "blue",
+      "gender": "male"
     },
     {
-      "id": 2,
-      "text": "Meeting at School",
-      "day": "Feb 6th at 1:30pm",
-      "reminder": true
+      "name": "Darth Vader",
+      "height": "202",
+      "mass": "136",
+      "eye_color": "yellow",
+      "gender": "male"
+    },
+    {
+      "name": "Leia Organa",
+      "height": "150",
+      "mass": "88",
+      "eye_color": "brown",
+      "gender": "female"
+    },
+    {
+      "name": "Anakin Skywalker",
+      "height": "188",
+      "mass": "84",
+      "eye_color": "blue",
+      "gender": "male"
     }
   ]
 }
