@@ -20,17 +20,9 @@
       "id": 3,
       "name": "Leia Organa",
       "height": "150",
-      "mass": "88",
+      "mass": "49",
       "eye_color": "brown",
       "gender": "female"
-    },
-    {
-      "id": 4,
-      "name": "Anakin Skywalker",
-      "height": "188",
-      "mass": "84",
-      "eye_color": "blue",
-      "gender": "male"
     }
   ]
 }

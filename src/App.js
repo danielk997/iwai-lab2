@@ -2,8 +2,8 @@ import {useEffect, useState} from 'react'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Tasks from './components/Tasks'
-import AddTask from './components/AddTask'
+import CharactersList from './components/CharactersList'
+import AddCharacter from './components/AddCharacter'
 import About from './components/About'
 import Filter from "./components/Filter";
 import Sorter from "./components/Sorter";
@@ -54,7 +54,6 @@ const App = () => {
         const data = await res.json()
 
         setFilteredCharacters([...filteredCharacters, data])
-
         setCharacters([...characters, data])
     }
 
@@ -64,16 +63,13 @@ const App = () => {
             method: 'DELETE',
         })
         //We should control the response status to decide if we will change the state or not.
-        // res.status === 200
-        //     ? setFilteredTasks(filteredTasks.filter((task) => task.id !== id))
-        //     : alert('Error Deleting This Task')
-        //
-        // res.status === 200
-        //   ? setTasks(tasks.filter((task) => task.id !== id))
-        //   : alert('Error Deleting This Task')
+       if(res.status === 200) {
+           setFilteredCharacters(filteredCharacters.filter((task) => task.id !== id))
+           setCharacters(characters.filter((task) => task.id !== id))
+       }
     }
 
-    const filterTasks = (e) => {
+    const onFilterCharacter = (e) => {
         setFilteredCharacters(
             characters.filter(it => it.mass.includes(mass.value) && it.height.includes(height.value)
             )
@@ -100,15 +96,15 @@ const App = () => {
                         path='/'
                         element={
                             <>
-                                {showAddTask && <AddTask onAdd={addTask}/>}
+                                {showAddTask && <AddCharacter onAdd={addTask}/>}
                                 <Filter
-                                    onMassChange={(e) => filterTasks(e)}
-                                    onHeightChange={(e) => filterTasks(e)}
+                                    onMassChange={(e) => onFilterCharacter(e)}
+                                    onHeightChange={(e) => onFilterCharacter(e)}
                                 />
                                 <Sorter onSortChange={(e) => onSortChange(e)}/>
                                 {filteredCharacters.length > 0 ? (
-                                    <Tasks
-                                        tasks={filteredCharacters}
+                                    <CharactersList
+                                        characters={filteredCharacters}
                                         onDelete={deleteTask}
                                     />
                                 ) : (

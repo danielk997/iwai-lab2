@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-const AddTask = ({onAdd}) => {
+const AddCharacter = ({onAdd}) => {
 
     const [name, setName] = useState('')
     const [height, setHeight] = useState('')
@@ -56,4 +56,4 @@ const AddTask = ({onAdd}) => {
     )
 }
 
-export default AddTask
+export default AddCharacter
