@@ -2,6 +2,7 @@ const Sorter = ({onSortChange: onSortChange}) => {
 
     return (
         <form className='add-form'>
+            <h2>Sorts</h2>
             <div className='form-control'>
                 <label>Sort By</label>
                 <select onChange={(e) => onSortChange(e)}>

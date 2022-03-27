@@ -2,6 +2,7 @@ const Filter = ({onMassChange: onMassChange, onHeightChange: onHeightChange}) =>
 
     return (
         <form className='add-form'>
+            <h2>Filters</h2>
             <div className='form-control'>
                 <label>Height</label>
                 <input

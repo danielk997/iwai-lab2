@@ -10,16 +10,16 @@ import Sorter from "./components/Sorter";
 
 const App = () => {
     const [showAddTask, setShowAddTask] = useState(false)
-    const [tasks, setTasks] = useState([])
-    const [filteredTasks, setFilteredTasks] = useState([])
+    const [characters, setCharacters] = useState([])
+    const [filteredCharacters, setFilteredCharacters] = useState([])
     const mass = document.getElementById('mass');
     const height = document.getElementById('height');
 
     useEffect(() => {
         const getTasks = async () => {
-            const tasksFromServer = await fetchTasks()
-            setTasks(tasksFromServer)
-            setFilteredTasks(tasksFromServer)
+            const charactersFromServer = await fetchTasks()
+            setCharacters(charactersFromServer)
+            setFilteredCharacters(charactersFromServer)
         }
 
         getTasks()
@@ -53,9 +53,9 @@ const App = () => {
 
         const data = await res.json()
 
-        setFilteredTasks([...filteredTasks, data])
+        setFilteredCharacters([...filteredCharacters, data])
 
-        setTasks([...tasks, data])
+        setCharacters([...characters, data])
     }
 
     // Delete Task
@@ -74,17 +74,17 @@ const App = () => {
     }
 
     const filterTasks = (e) => {
-        setFilteredTasks(
-            tasks.filter(it => it.mass.includes(mass.value) && it.height.includes(height.value)
+        setFilteredCharacters(
+            characters.filter(it => it.mass.includes(mass.value) && it.height.includes(height.value)
             )
         )
     }
 
     const onSortChange = (e) => {
-        setFilteredTasks(
+        setFilteredCharacters(
             e.target.value === 'height' ?
-                [...filteredTasks.sort((a, b) => a.height - b.height)] :
-                [...filteredTasks.sort((a, b) => a.mass - b.mass)]
+                [...filteredCharacters.sort((a, b) => a.height - b.height)] :
+                [...filteredCharacters.sort((a, b) => a.mass - b.mass)]
         )
     }
 
@@ -106,9 +106,9 @@ const App = () => {
                                     onHeightChange={(e) => filterTasks(e)}
                                 />
                                 <Sorter onSortChange={(e) => onSortChange(e)}/>
-                                {filteredTasks.length > 0 ? (
+                                {filteredCharacters.length > 0 ? (
                                     <Tasks
-                                        tasks={filteredTasks}
+                                        tasks={filteredCharacters}
                                         onDelete={deleteTask}
                                     />
                                 ) : (

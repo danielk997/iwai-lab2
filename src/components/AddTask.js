@@ -1,49 +1,59 @@
-import { useState } from 'react'
+import {useState} from 'react'
 
-const AddTask = ({ onAdd }) => {
-  const [text, setText] = useState('')
-  const [day, setDay] = useState('')
-  const [reminder, setReminder] = useState(false)
+const AddTask = ({onAdd}) => {
 
-  const onSubmit = (e) => {
-    e.preventDefault()
+    const [name, setName] = useState('')
+    const [height, setHeight] = useState('')
+    const [mass, setMass] = useState('')
+    const [eyeColor, setEyeColor] = useState('')
 
-    if (!text) {
-      alert('Please add a task')
-      return
+    const onSubmit = (e) => {
+        e.preventDefault()
+
+        onAdd({name, height, mass, eye_color: eyeColor})
     }
 
-    onAdd({ text, day, reminder })
+    return (
+        <form className='add-form' onSubmit={onSubmit}>
+            <div className='form-control'>
+                <label>Name</label>
+                <input
+                    type='text'
+                    placeholder='Add Name'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+            </div>
+            <div className='form-control'>
+                <label>Height</label>
+                <input
+                    type='text'
+                    placeholder='Height'
+                    value={height}
+                    onChange={(e) => setHeight(e.target.value)}
+                />
+            </div>
+          <div className='form-control'>
+            <label>Mass</label>
+            <input
+                type='text'
+                placeholder='mass'
+                value={mass}
+                onChange={(e) => setMass(e.target.value)}
+            />
+          </div>
+            <div className='form-control'>
+                <label>Eye color</label>
+                <select onChange={(e) => setEyeColor(e.target.value)}>
+                    <option value="blue">blue</option>
+                    <option value="brown">brown</option>
+                    <option value="green">green</option>
+                </select>
+            </div>
 
-    setText('')
-    setDay('')
-    setReminder(false)
-  }
-
-  return (
-    <form className='add-form' onSubmit={onSubmit}>
-      <div className='form-control'>
-        <label>Task</label>
-        <input
-          type='text'
-          placeholder='Add Task'
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-      </div>
-      <div className='form-control'>
-        <label>Day & Time</label>
-        <input
-          type='text'
-          placeholder='Add Day & Time'
-          value={day}
-          onChange={(e) => setDay(e.target.value)}
-        />
-      </div>
-
-      <input type='submit' value='Save Task' className='btn btn-block' />
-    </form>
-  )
+            <input type='submit' value='Save Task' className='btn btn-block'/>
+        </form>
+    )
 }
 
 export default AddTask
